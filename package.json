@@ -1,0 +1,21 @@
+{
+  "name": "semitone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "semitone.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jasmine": "^3.4.0",
+    "jasmine-matchers": "^0.2.3",
+    "matchers": "0.0.1",
+    "node": "^12.10.0",
+    "npm": "^6.11.3"
+  },
+  "devDependencies": {
+    "jasmine-expect": "^4.0.3"
+  }
+}
