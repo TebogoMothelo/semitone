@@ -30,7 +30,7 @@
 
     checkAnswer(guess){
         if(guess != this.semitones) {
-            return false;
+            return false + `the answer is ${this.semitones}`;
         }
         return true; 
     }   

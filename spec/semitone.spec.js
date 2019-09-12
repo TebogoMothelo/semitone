@@ -40,7 +40,7 @@ describe("jamBuddy", () => {
     });
 
     it("checkAnswer(), should some value", () => {
-        expect(buddy.checkAnswer()).toBeDefined();
+        expect(buddy.checkAnswer()).not.toBeNull();
     });
 
     // it("checkAnswer should return a boolean", () => {
