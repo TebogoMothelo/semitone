@@ -1,10 +1,11 @@
+const jsdom = require('jsdom');
+const fs = require('fs');
+const index = fs.readFileSync('./index.html', 'utf-8')
+const {JSDOM} = jsdom;
+
+const {document} = (new JSDOM(index)).window;
+global.document = document;
 const JamBuddy = require("../semitone.js");
-const jsdom = require("jsdom");
-const fs = require("fs")
-// const dom = require("../index.html");
-const index = fs.readFileSync('../index.html', 'utf-8')
-const document = (new JSDOM(index)).window;
-global.document = document
 
 describe("jamBuddy", () => {
   let buddy;
@@ -28,6 +29,13 @@ describe("jamBuddy", () => {
   it("checkAnswer(), should return a string", ()=>{
       expect(buddy.checkAnswer(1)).toEqual(jasmine.any(String))
   });
+
+  it("should print the result of selectNotes() in a paragraph element on the gui", () =>{
+
+      let result = buddy.selectNotes() 
+      console.log(result)
+      expect(document.getElementById("chosen-notes").innerHTML).toEqual(document.getElementById("chosen-notes").innerHTML = result.join(","))
+  })
 
 
 });

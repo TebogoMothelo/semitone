@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
     "fs": "0.0.1-security",
     "jasmine": "^3.4.0",
     "jasmine-matchers": "^0.2.3",

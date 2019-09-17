@@ -1,5 +1,5 @@
 
- module.exports = class JamBuddy {
+class JamBuddy {
     constructor () {
         this.notes = ["A", "A#", "B", "C", "C#", "D", "D#","E", "F", "F#", "G","G#"];
         this.selectedNotes = [];
@@ -37,7 +37,5 @@
 }
 
 
-// var buddy = new JamBuddy();
-// console.log(buddy.selectNotes());
-// // console.log(buddy.countSemitones());
-// console.log(buddy.checkAnswer(7));
+ var buddy = new JamBuddy();
+ module.exports = JamBuddy
