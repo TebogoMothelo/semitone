@@ -12,10 +12,12 @@
             note = this.notes[Math.floor(Math.random()* this.notes.length)];
                 this.selectedNotes.push(note);         
         }
-        return this.selectedNotes;
+         return document.getElementById("chosen-notes").innerHTML = this.selectedNotes;
     }
+   
+    checkAnswer(){
 
-    countSemitones(){
+        var guess = document.getElementById("answer").value
         let first = this.notes.indexOf(this.selectedNotes[0]);
         let second = this.notes.indexOf(this.selectedNotes[1]);
 
@@ -25,19 +27,17 @@
             this.semitones = second - first;
         }
 
-        return this.semitones;
-    }
-
-    checkAnswer(guess){
         if(guess != this.semitones) {
-            return false + `the answer is ${this.semitones}`;
-        }
-        return true; 
-    }   
+            return document.getElementById("win-lose").innerHTML="Wrong answer! Try again";
+        } else {
+       
+        return document.getElementById("win-lose").innerHTML= "You got it right .Well Done!";
+    }
+}
 }
 
 
-// let buddy = new JamBuddy();
+// var buddy = new JamBuddy();
 // console.log(buddy.selectNotes());
-// console.log(buddy.countSemitones());
+// // console.log(buddy.countSemitones());
 // console.log(buddy.checkAnswer(7));

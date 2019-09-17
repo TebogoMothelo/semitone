@@ -1,51 +1,33 @@
-const JamBuddy = require('../semitone.js');
+const JamBuddy = require("../semitone.js");
+const jsdom = require("jsdom");
+const fs = require("fs")
+// const dom = require("../index.html");
+const index = fs.readFileSync('../index.html', 'utf-8')
+const document = (new JSDOM(index)).window;
+global.document = document
 
 describe("jamBuddy", () => {
-    let buddy;
+  let buddy;
 
-        beforeAll(() => {
-            buddy = new JamBuddy();     
-    });
+  beforeAll(() => {
+    buddy = new JamBuddy();
+  });
 
-    it("selectNotes(), should return a value that is defined", () => {
-        expect(buddy.selectNotes()).toBeDefined();
-    });
+  it("selectNotes(), should return a value that is defined", () => {
+    expect(buddy.selectNotes()).toBeDefined();
+  });
 
-    it("selectNotes(), should return an array", () => {
-        expect(buddy.selectNotes()).toEqual(jasmine.any(Array));
-    });
-})
+  it("selectNotes(), should return an array", () => {
+    expect(buddy.selectNotes()).toEqual(jasmine.any(Array));
+  });
 
-describe("jamBuddy", () => {
-    let buddy;
+  it("checkAnswer(), should some value", () => {
+    expect(buddy.checkAnswer()).not.toBeNull();
+  });
 
-        beforeAll(() => {
-            buddy = new JamBuddy();     
-    });
+  it("checkAnswer(), should return a string", ()=>{
+      expect(buddy.checkAnswer(1)).toEqual(jasmine.any(String))
+  });
 
-    it("countSemitones(), should return something", () =>{
-        expect(buddy.countSemitones()).not.toBeNull();
-    } )
 
-    it("countSemitones(), should a number", () => {
-        expect(buddy.countSemitones()).toMatch(/\d/)
-    });
-})
-
-describe("jamBuddy", () => {
-    let buddy;
-
-        beforeAll(() => {
-            buddy = new JamBuddy();     
-    });
-
-    it("checkAnswer(), should some value", () => {
-        expect(buddy.checkAnswer()).not.toBeNull();
-    });
-
-    // it("checkAnswer should return a boolean", () => {
-    //     expect(buddy.checkAnswer()).toBeBoolean();
-
-    // })
 });
-

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Semitone</title>
+    <link type="text/css" rel="stylesheet" href="semitone.css">
+</head>
+<body>
+        <h1> Guess the semitones</h1>
+    <div class="container">
+    <h2>Guess the distance from one note to another</h2><br>
+    <button id="get-notes" type="button" onclick="buddy.selectNotes()">Get Random Notes</button>
+    <p id="chosen-notes"></p>
+    <p id="type">Type your answer here :</p>
+    <input id="answer" type="number"></input><br>
+    <button type="button" id="submit-answer" onclick="buddy.checkAnswer()">Submit Answer</button>
+    <p id="win-lose"></p>
+    <button type="button" id="restart" onclick="window.location.reload()">Restart</button>
+</div>
+    <script src="semitone.js"></script>
+</body>
+
+
+</html>

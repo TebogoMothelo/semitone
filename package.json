@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.1-security",
     "jasmine": "^3.4.0",
     "jasmine-matchers": "^0.2.3",
+    "jsdom": "^15.1.1",
     "matchers": "0.0.1",
     "node": "^12.10.0",
     "npm": "^6.11.3"
