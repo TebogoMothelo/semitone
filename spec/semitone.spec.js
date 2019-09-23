@@ -33,9 +33,12 @@ describe("jamBuddy", () => {
   it("should print the result of selectNotes() in a paragraph element on the gui", () =>{
 
       let result = buddy.selectNotes() 
-      console.log(result)
       expect(document.getElementById("chosen-notes").innerHTML).toEqual(document.getElementById("chosen-notes").innerHTML = result.join(","))
+  });
+
+  it("should have an h1 that says guess the semitones", () => {
+    expect(document.getElementById("name").innerHTML).toEqual(" Guess the semitones" );
   })
-
-
 });
+
+
