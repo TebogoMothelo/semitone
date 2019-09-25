@@ -2,43 +2,17 @@ class JamBuddy {
   constructor() {
     this.notes = [
       "A",
-      "A#",
+      ["A#", "Bb"],
       "B",
       "C",
-      "C#",
+      ["C#", "Db"],
       "D",
-      "D#",
+      ["D#", "Eb"],
       "E",
       "F",
-      "F#",
+      ["F#", "Gb"],
       "G",
-      "G#",
-      "Ab",
-      "Bb",
-      "Bb",
-      "Db",
-      "Db",
-      "Db",
-      "Eb",
-      "Eb",
-      "Gb",
-      "Gb",
-      "Ab",
-      "Ab"
-    ];
-    this.flatNotes = [
-      "Ab",
-      "Bb",
-      "Bb",
-      "Db",
-      "Db",
-      "Db",
-      "Eb",
-      "Eb",
-      "Gb",
-      "Gb",
-      "Ab",
-      "Ab"
+      ["G#", "Ab"],
     ];
     this.selectedNotes = [];
     this.semitones;
@@ -59,10 +33,6 @@ class JamBuddy {
     var guess = document.getElementById("answer").value;
     let first = this.notes.indexOf(this.selectedNotes[0]);
     let second = this.notes.indexOf(this.selectedNotes[1]);
-
-    if (this.notes.indexOf(first) == this.flatNotes.indexOf(second)) {
-      this.semitones = 0;
-    }
 
     if (first > second) {
       this.semitones = first - second;
