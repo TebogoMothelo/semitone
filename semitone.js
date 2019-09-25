@@ -12,16 +12,26 @@ class JamBuddy {
       "F",
       ["F#", "Gb"],
       "G",
-      ["G#", "Ab"],
+      ["G#", "Ab"]
     ];
     this.selectedNotes = [];
     this.semitones;
   }
 
   selectNotes() {
+    let x;
     let note;
+    let flatNotes = this.notes.map(function(val) {
+      if (val.length == 2) {
+        for (let i = 0; i == 0; i++) {
+          val = val[Math.floor(Math.random() * val.length)];
+        }
+      }
+      return val;
+    });
+
     for (let i = 0; i <= 1; i++) {
-      note = this.notes[Math.floor(Math.random() * this.notes.length)];
+      note = flatNotes[Math.floor(Math.random() * flatNotes.length)];
       this.selectedNotes.push(note);
     }
     return (document.getElementById(
