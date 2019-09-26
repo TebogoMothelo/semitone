@@ -12,15 +12,21 @@
         <h1 id="name"> Guess the semitones</h1>
     <div class="container">
     <h2>Guess the distance from one note to another</h2><br>
-    <button id="get-notes" type="button" onclick="buddy.selectNotes()">Get Random Notes</button>
+    <button id="get-notes" type="button" onclick="buddy.selectNotes(); buddy.removeAnswer()">Get Random Notes</button>
     <p id="chosen-notes"></p>
-    <p id="type">Type your answer here :</p>
-    <input id="answer" type="number"></input><br>
-    <button type="button" id="submit-answer" onclick="buddy.checkAnswer()">Submit Answer</button>
+    <p id="type" required>Type your answer here :</p>
+    <input id="answer" required></input><br>
+    <button type="button" id="submit-answer" onclick="buddy.checkAnswer(); buddy.revealNotesIfRight(); buddy.printsFinalAnswer()">Submit Answer</button>
     <p id="win-lose"></p>
+    <br>
+    <button type="button" id="reveal-answer" onclick="buddy.revealNotes(); buddy.revealAnswer()">Reveal Answer</button>
+    <div id="explanation"><span id="semi"></span></div>
+    <br>
+    <div id="final-answer"></div>
+    <h3 id="streak"></h3>
     <button type="button" id="restart" onclick="window.location.reload()">Restart</button>
 </div>
-    <script src="semitone.js"></script>
+    <script src="semitone2.js"></script>
 </body>
 
 

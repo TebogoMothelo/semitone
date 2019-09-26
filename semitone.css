@@ -9,7 +9,7 @@ html {
     margin-left: 550px;
     margin-top: 50px;
     width: 800px;
-    height: 500px;
+    height: 700px;
     position: relative;
     text-align: center;
 }
@@ -44,6 +44,7 @@ button {
 }
  #submit-answer {
     margin-top: 20px;
+    margin-bottom: 30px;
     height: 28px;
 
 } 
@@ -61,3 +62,10 @@ button {
     margin-top: 40px;
     font-size: 20px;
 }  
+
+#reveal-answer {
+    background-color: #FB4F14;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}

@@ -1,4 +1,3 @@
-
 class JamBuddy {
   constructor() {
     this.notes = [
@@ -22,7 +21,7 @@ class JamBuddy {
     this.ar = [];
     this.streak = 0;
     this.guess;
-    document.getElementById("streak").innerHTML= `Streak: ${this.streak}`;
+    document.getElementById("streak").innerHTML = `Streak: ${this.streak}`;
   }
 
   selectNotes() {
@@ -40,9 +39,9 @@ class JamBuddy {
       note = flatNotes[Math.floor(Math.random() * flatNotes.length)];
       this.selectedNotes.push(note);
     }
-    (document.getElementById(
+    document.getElementById(
       "chosen-notes"
-    ).innerHTML = this.selectedNotes.slice(-2));
+    ).innerHTML = this.selectedNotes.slice(-2);
   }
 
   checkAnswer() {
@@ -72,19 +71,15 @@ class JamBuddy {
       }
     }
     if (this.guess != this.semitones) {
-      (document.getElementById("win-lose").innerHTML =
-        "Wrong answer! Try again");
-       
+      document.getElementById("win-lose").innerHTML = "Wrong answer! Try again";
     } else {
       (document.getElementById(
         "win-lose"
-      ).innerHTML = `You got it right .Well Done!`),streak++;
+      ).innerHTML = `You got it right .Well Done!`),
+        this.streak++;
     }
-    
-     
   }
-
-  revealAnswer() {
+  revealNotesIfRight() {
     let arr1 = document.getElementById("chosen-notes").innerHTML.split(",");
     for (let k = 0; k < this.notes.length; k++) {
       if (arr1[0] == this.notes[k][0]) {
@@ -92,7 +87,7 @@ class JamBuddy {
       } else if (arr1[1] == this.notes[k][0]) {
         this.ar.push(this.notes[k][0].fontcolor("red").fontsize(5));
       } else if (arr1[1] == this.notes[k][1]) {
-        this.ar.push(this.notes[k][1].fontcolor("red").fontsize(5));   
+        this.ar.push(this.notes[k][1].fontcolor("red").fontsize(5));
       } else if (arr1[0] == this.notes[k][1]) {
         this.ar.push(this.notes[k][1].fontcolor("red").fontsize(5));
       } else if (arr1[0] == this.notes[k]) {
@@ -103,10 +98,25 @@ class JamBuddy {
         this.ar.push(this.notes[k]);
       }
     }
-    document.getElementById("explanation").innerHTML = this.ar;}
+    if (this.guess != this.semitones) {
+      document.getElementById("explanation").innerHTML = "";
+    } else {
+      document.getElementById("explanation").innerHTML = this.ar;
+    }
   }
 
-  printsFinalAnswer(){
+  revealAnswer() {
+    this.printsFinalAnswer();
+    document.getElementById(
+      "final-answer"
+    ).innerHTML = `The correct answer is ${this.semitones}`;
+  }
+  revealNotes() {
+    this.revealNotesIfRight();
+    document.getElementById("final-answer").innerHTML = this.ar;
+  }
+
+  printsFinalAnswer() {
     var first, second;
     for (let i = 0; i < this.notes.length; i++) {
       if (
@@ -130,26 +140,25 @@ class JamBuddy {
         this.semitones = second - first;
       }
     }
-    document.getElementById("final-answer").innerHTML= `The correct answer is ${this.semitones}`;
+    if (this.guess != this.semitones) {
+      document.getElementById("final-answer").innerHTML = "";
+    } else if ((this.guess = this.semitones)) {
+      document.getElementById(
+        "final-answer"
+      ).innerHTML = `The correct answer is ${this.semitones}`;
     }
+  }
 
-  removeAnswer () {
-    document.getElementById("explanation").style.display='none';
+  removeAnswer() {
+    document.getElementById("explanation").style.display = "none";
 
-    document.getElementById("final-answer").style.display='none';
-    document.getElementById(
-      "win-lose").style.display= 'none';
-
+    document.getElementById("final-answer").style.display = "none";
+    document.getElementById("win-lose").style.display = "none";
+  }
 }
 
-
+//counter-VERY NB
+//reloading submit -not nb
 var buddy = new JamBuddy();
-window.location.onload=buddy.selectNotes();
+window.location.onload = buddy.selectNotes();
 module.exports = JamBuddy;
-
-//reveal answer doesnt work after submit answer- DONE
-//Cant display final answer in reveal answer- DONE
-//reveal answer when user gets a correct answer-DONE
-//make submit allow resubmission-DONE
-//keep track of score;
-//clear output from get random notes-DONE
