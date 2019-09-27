@@ -1,71 +1,66 @@
 html {
-  
-    background-color: #272525;
-
+  background-color: #272525;
 }
 
-.container{
-    background-color: #00C09D;
-    margin-left: 550px;
-    margin-top: 50px;
-    width: 800px;
-    height: 700px;
-    position: relative;
-    text-align: center;
+#container {
+  background-color: #00c09d;
+  margin-left: 550px;
+  margin-top: 50px;
+  width: 800px;
+  height: 700px;
+  position: relative;
+  text-align: center;
 }
 
 h1 {
-    font-size: 66px;
-    margin-left: 650px;
-    color: #00C09D;
+  font-size: 66px;
+  margin-left: 650px;
+  color: #00c09d;
 }
 
-h2{
-    font-size: 26px;
-    padding-top: 50px;
+h2 {
+  font-size: 26px;
+  padding-top: 50px;
 }
 
 button {
-    font-size: 20px;
+  font-size: 20px;
 }
 #get-notes {
-    background-color: #FB4F14;
-    border: none;
-    border-radius: 12px;
-    height: 40px;
-    width: 200px;
-
+  background-color: #fb4f14;
+  border: none;
+  border-radius: 12px;
+  height: 40px;
+  width: 200px;
 }
 
- #answer{
-    
-    height: 25px;
-    width: 220px;
+#answer {
+  height: 25px;
+  width: 220px;
 }
- #submit-answer {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    height: 28px;
+#submit-answer {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  height: 28px;
+}
 
-} 
-
- #restart {
-    background-color: #FB4F14;
-    margin-top: 40px;
-    height: 40px;
-    width: 160px;
-    border: none;
-    border-radius: 12px;
-} 
+#restart {
+  background-color: #fb4f14;
+  margin-top: 40px;
+  height: 40px;
+  width: 160px;
+  border: none;
+  border-radius: 12px;
+}
 
 #type {
-    margin-top: 40px;
-    font-size: 20px;
-}  
+  margin-top: 40px;
+  font-size: 20px;
+}
 
 #reveal-answer {
-    background-color: #FB4F14;
-    border: none;
-    border-radius: 12px;
-    margin-bottom: 20px;
+  background-color: #fb4f14;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }

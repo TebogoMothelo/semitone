@@ -39,9 +39,9 @@ class JamBuddy {
       note = flatNotes[Math.floor(Math.random() * flatNotes.length)];
       this.selectedNotes.push(note);
     }
-    document.getElementById(
+    return (document.getElementById(
       "chosen-notes"
-    ).innerHTML = this.selectedNotes.slice(-2);
+    ).innerHTML = this.selectedNotes.slice(-2));
   }
 
   checkAnswer() {
@@ -78,7 +78,11 @@ class JamBuddy {
       ).innerHTML = `You got it right .Well Done!`),
         this.streak++;
     }
+    return (document.getElementById(
+      "streak"
+    ).innerHTML = `Streak: ${this.streak}`);
   }
+
   revealNotesIfRight() {
     let arr1 = document.getElementById("chosen-notes").innerHTML.split(",");
     for (let k = 0; k < this.notes.length; k++) {
@@ -107,13 +111,13 @@ class JamBuddy {
 
   revealAnswer() {
     this.printsFinalAnswer();
-    document.getElementById(
+    return (document.getElementById(
       "final-answer"
-    ).innerHTML = `The correct answer is ${this.semitones}`;
+    ).innerHTML = `The correct answer is ${this.semitones}`);
   }
   revealNotes() {
     this.revealNotesIfRight();
-    document.getElementById("final-answer").innerHTML = this.ar;
+    return (document.getElementById("final-answer").innerHTML = this.ar);
   }
 
   printsFinalAnswer() {
@@ -151,14 +155,10 @@ class JamBuddy {
 
   removeAnswer() {
     document.getElementById("explanation").style.display = "none";
-
     document.getElementById("final-answer").style.display = "none";
     document.getElementById("win-lose").style.display = "none";
   }
 }
 
-//counter-VERY NB
-//reloading submit -not nb
 var buddy = new JamBuddy();
-window.location.onload = buddy.selectNotes();
 module.exports = JamBuddy;

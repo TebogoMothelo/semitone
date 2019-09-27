@@ -1,11 +1,11 @@
-const jsdom = require('jsdom');
-const fs = require('fs');
-const index = fs.readFileSync('./index.html', 'utf-8')
-const {JSDOM} = jsdom;
+const jsdom = require("jsdom");
+const fs = require("fs");
+const index = fs.readFileSync("./index.html", "utf-8");
+const { JSDOM } = jsdom;
 
-const {document} = (new JSDOM(index)).window;
+const { document } = new JSDOM(index).window;
 global.document = document;
-const JamBuddy = require("../semitone.js");
+const JamBuddy = require("../semitone2.js");
 
 describe("jamBuddy", () => {
   let buddy;
@@ -26,19 +26,31 @@ describe("jamBuddy", () => {
     expect(buddy.checkAnswer()).not.toBeNull();
   });
 
-  it("checkAnswer(), should return a string", ()=>{
-      expect(buddy.checkAnswer(1)).toEqual(jasmine.any(String))
+  it("checkAnswer(), should return a string", () => {
+    expect(buddy.checkAnswer(1)).toEqual(jasmine.any(String));
   });
 
-  it("should print the result of selectNotes() in a paragraph element on the gui", () =>{
-
-      let result = buddy.selectNotes() 
-      expect(document.getElementById("chosen-notes").innerHTML).toEqual(document.getElementById("chosen-notes").innerHTML = result.join(","))
+  it("should print the result of selectNotes() in a paragraph element on the gui", () => {
+    let result = buddy.selectNotes();
+    expect(document.getElementById("chosen-notes").innerHTML).toEqual(
+      (document.getElementById("chosen-notes").innerHTML = result.join(","))
+    );
   });
 
   it("should have an h1 that says guess the semitones", () => {
-    expect(document.getElementById("name").innerHTML).toEqual(" Guess the semitones" );
-  })
+    expect(document.getElementById("name").innerHTML).toEqual(
+      " Guess the semitones"
+    );
+  });
+
+  it("revealAnswer(), should return a string with the correct answer", () => {
+    let result = buddy.revealAnswer(buddy.printsFinalAnswer());
+
+    expect(result).toEqual(jasmine.any(String));
+  });
+
+  it("revealNotes(), should return a string with the correct answer", () => {
+    let result = buddy.revealNotes(buddy.revealNotesIfRight());
+    expect(result).toEqual(jasmine.any(Array));
+  });
 });
-
-
