@@ -18,7 +18,7 @@ class JamBuddy {
     this.selectedNotes = [];
     this.semitones;
     this.answer = document.getElementById("explanation");
-    this.ar = [];
+    this.notesToColor = [];
     this.streak = 0;
     this.guess;
     document.getElementById("streak").innerHTML = `Streak: ${this.streak}`;
@@ -26,7 +26,7 @@ class JamBuddy {
 
   selectNotes() {
     let note;
-    let flatNotes = this.notes.map(function(val) {
+    let flatNotes = this.notes.map(function (val) {
       if (val.length == 2) {
         for (let i = 0; i == 0; i++) {
           val = val[Math.floor(Math.random() * val.length)];
@@ -51,32 +51,29 @@ class JamBuddy {
     for (let i = 0; i < this.notes.length; i++) {
       if (
         this.notes[i][0] ===
-          this.selectedNotes[this.selectedNotes.length - 2] ||
+        this.selectedNotes[this.selectedNotes.length - 2] ||
         this.notes[i][1] === this.selectedNotes[this.selectedNotes.length - 2]
       ) {
         var first = i;
       }
       if (
         this.notes[i][0] ===
-          this.selectedNotes[this.selectedNotes.length - 1] ||
+        this.selectedNotes[this.selectedNotes.length - 1] ||
         this.notes[i][1] === this.selectedNotes[this.selectedNotes.length - 1]
       ) {
         var second = i;
       }
-
-      if (first > second) {
-        this.semitones = first - second;
-      } else {
-        this.semitones = second - first;
-      }
     }
+
+    this.semitones = Math.abs(first - second);
+
     if (this.guess != this.semitones) {
       document.getElementById("win-lose").innerHTML = "Wrong answer! Try again";
     } else {
       (document.getElementById(
         "win-lose"
       ).innerHTML = `You got it right .Well Done!`),
-        this.streak++;
+      this.streak++;
     }
     return (document.getElementById(
       "streak"
@@ -84,66 +81,52 @@ class JamBuddy {
   }
 
   revealNotesIfRight() {
-    let arr1 = document.getElementById("chosen-notes").innerHTML.split(",");
+    let chosenNotes = document
+      .getElementById("chosen-notes")
+      .innerHTML.split(",");
     for (let k = 0; k < this.notes.length; k++) {
-      if (arr1[0] == this.notes[k][0]) {
-        this.ar.push(this.notes[k][0].fontcolor("red").fontsize(5));
-      } else if (arr1[1] == this.notes[k][0]) {
-        this.ar.push(this.notes[k][0].fontcolor("red").fontsize(5));
-      } else if (arr1[1] == this.notes[k][1]) {
-        this.ar.push(this.notes[k][1].fontcolor("red").fontsize(5));
-      } else if (arr1[0] == this.notes[k][1]) {
-        this.ar.push(this.notes[k][1].fontcolor("red").fontsize(5));
-      } else if (arr1[0] == this.notes[k]) {
-        this.ar.push(this.notes[k].fontcolor("red").fontsize(5));
-      } else if (arr1[1] == this.notes[k]) {
-        this.ar.push(this.notes[k].fontcolor("red").fontsize(5));
+      if (
+        chosenNotes[0] == this.notes[k][0] ||
+        chosenNotes[1] == this.notes[k][0]
+      ) {
+        this.notesToColor.push(this.notes[k][0].fontcolor("red").fontsize(5));
+      } else if (
+        chosenNotes[1] == this.notes[k][1] ||
+        chosenNotes[0] == this.notes[k][1]
+      ) {
+        this.notesToColor.push(this.notes[k][1].fontcolor("red").fontsize(5));
+      } else if (
+        chosenNotes[0] == this.notes[k] ||
+        chosenNotes[1] == this.notes[k]
+      ) {
+        this.notesToColor.push(this.notes[k].fontcolor("red").fontsize(5));
       } else {
-        this.ar.push(this.notes[k]);
+        this.notesToColor.push(this.notes[k]);
       }
     }
     if (this.guess != this.semitones) {
       document.getElementById("explanation").innerHTML = "";
     } else {
-      document.getElementById("explanation").innerHTML = this.ar;
+      document.getElementById(
+        "explanation"
+      ).innerHTML = this.notesToColor.splice(1, 17);
     }
   }
 
   revealAnswer() {
-    this.printsFinalAnswer();
     return (document.getElementById(
       "final-answer"
     ).innerHTML = `The correct answer is ${this.semitones}`);
   }
+
   revealNotes() {
     this.revealNotesIfRight();
-    return (document.getElementById("final-answer").innerHTML = this.ar);
+    return (document.getElementById(
+      "final-answer"
+    ).innerHTML = this.notesToColor);
   }
 
   printsFinalAnswer() {
-    var first, second;
-    for (let i = 0; i < this.notes.length; i++) {
-      if (
-        this.notes[i][0] ===
-          this.selectedNotes[this.selectedNotes.length - 2] ||
-        this.notes[i][1] === this.selectedNotes[this.selectedNotes.length - 2]
-      ) {
-        var first = i;
-      }
-      if (
-        this.notes[i][0] ===
-          this.selectedNotes[this.selectedNotes.length - 1] ||
-        this.notes[i][1] === this.selectedNotes[this.selectedNotes.length - 1]
-      ) {
-        var second = i;
-      }
-
-      if (first > second) {
-        this.semitones = first - second;
-      } else {
-        this.semitones = second - first;
-      }
-    }
     if (this.guess != this.semitones) {
       document.getElementById("final-answer").innerHTML = "";
     } else if ((this.guess = this.semitones)) {
@@ -151,12 +134,6 @@ class JamBuddy {
         "final-answer"
       ).innerHTML = `The correct answer is ${this.semitones}`;
     }
-  }
-
-  removeAnswer() {
-    document.getElementById("explanation").style.display = "none";
-    document.getElementById("final-answer").style.display = "none";
-    document.getElementById("win-lose").style.display = "none";
   }
 }
 

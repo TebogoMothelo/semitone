@@ -49,8 +49,9 @@ describe("jamBuddy", () => {
     expect(result).toEqual(jasmine.any(String));
   });
 
-  it("revealNotes(), should return a string with the correct answer", () => {
-    let result = buddy.revealNotes(buddy.revealNotesIfRight());
+  it("revealNotes(), should return the array of notes with the selected notes highlighted", () => {
+    buddy.revealNotesIfRight()
+    let result = buddy.revealNotes();
     expect(result).toEqual(jasmine.any(Array));
   });
 });
